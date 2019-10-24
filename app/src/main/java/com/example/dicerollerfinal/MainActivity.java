@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     public void on_button_click(View view){
         TextView tv = (TextView) this.findViewById(R.id.textView);
         EditText tv2 = (EditText) this.findViewById(R.id.editText);
+        TextView tv3 = (TextView) this.findViewById(R.id.textView2);
 
         Random r = new Random();
         int number = r.nextInt(7-1)+1;
@@ -69,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         int two = Integer.valueOf(tv2.getText().toString());
 
         if (one == two){
+
+            int three = Integer.valueOf(tv3.getText().toString());
+            int plus = three +1;
+            tv3.setText(Integer.toString(plus));
             Toast.makeText(getApplicationContext(), "Congratulations!", Toast.LENGTH_SHORT).show();
         }
     }
