@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,13 +59,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void on_button_click(View view){
+        roll_the_dice();
+
         TextView tv = (TextView) this.findViewById(R.id.textView);
         EditText tv2 = (EditText) this.findViewById(R.id.editText);
         TextView tv3 = (TextView) this.findViewById(R.id.textView2);
 
-        Random r = new Random();
-        int number = r.nextInt(7-1)+1;
-        tv.setText(Integer.toString(number));
 
         int one = Integer.valueOf(tv.getText().toString());
         int two = Integer.valueOf(tv2.getText().toString());
@@ -76,5 +76,34 @@ public class MainActivity extends AppCompatActivity {
             tv3.setText(Integer.toString(plus));
             Toast.makeText(getApplicationContext(), "Congratulations!", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void roll_the_dice (){
+        TextView tv = (TextView) this.findViewById(R.id.textView);
+
+        Random r = new Random();
+        int number = r.nextInt(7-1)+1;
+
+        tv.setText(Integer.toString(number));
+    }
+
+
+    public void iceBreakers (View view){
+
+        roll_the_dice();
+
+        TextView tv = this.findViewById(R.id.textView);
+        int number = Integer.valueOf(tv.getText().toString());
+
+        ArrayList <String> arrayQuestions = new ArrayList();
+        arrayQuestions.add("This will not be chosen");
+        arrayQuestions.add("If you could go anywhere in the world, where would you go?");
+        arrayQuestions.add("If you were stranded on a desert island, what three things would you want to take with you?");
+        arrayQuestions.add("If you could eat only one food for the rest of your life, what would that be?");
+        arrayQuestions.add("If you won a million dollars, what is the first thing you would buy?");
+        arrayQuestions.add("If you could spaned the day with one fictional character, who would it be?");
+        arrayQuestions.add("If you found a magic lantern and a genie gave you three wishes, what would you wish?");
+
+        TextView questionBox = (TextView) this.findViewById(R.id.questionBox);
+        questionBox.setText(arrayQuestions.get(number));
     }
 }
